@@ -1,12 +1,12 @@
+## Imports 
 from requests import get
 from pprint import PrettyPrinter
-
 from requests.models import Response
 
 API_KEY = 'ae8797629314e2956861'
 BASE_URL = 'https://free.currconv.com/'
 printer = PrettyPrinter()
-
+# Get fulll list of currencies
 def get_currencies():
     endpoint = f"api/v7/currencies?apiKey={API_KEY}"
     url = BASE_URL+ endpoint
@@ -14,7 +14,8 @@ def get_currencies():
     data = list(data.items())
     data.sort()
     return data
-    
+
+#print Currencies
 def print_currencies(currencies):
     for name, currency in currencies:
         name = currency["currencyName"]
@@ -22,6 +23,7 @@ def print_currencies(currencies):
         symbol = currency.get("currencySymbol","")
         print(f"{_id}-{name} - {symbol}")
 
+# Getting Exchange rate
 def exchange_rate(currency1, currency2):
     endpoint = f"api/v7/convert?q={currency1}_{currency2}&compact=ultra&apiKey={API_KEY}"
     url = BASE_URL + endpoint
@@ -34,6 +36,7 @@ def exchange_rate(currency1, currency2):
     print(f"{currency1} --> {currency2} = {rate}")
     return rate
 
+# convert
 def convert(currency1, currency2,amount):
     rate = exchange_rate(currency1,currency2)
     if rate is None:
