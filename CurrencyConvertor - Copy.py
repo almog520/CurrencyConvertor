@@ -6,6 +6,7 @@ from requests.models import Response
 API_KEY = 'ae8797629314e2956861'
 BASE_URL = 'https://free.currconv.com/'
 printer = PrettyPrinter()
+
 # Get fulll list of currencies
 def get_currencies():
     endpoint = f"api/v7/currencies?apiKey={API_KEY}"
@@ -76,4 +77,7 @@ def main():
             exchange_rate(currency1 = currency1, currency2 = currency2)
         else:
             print("Invalid Command!")
+########################################################################## $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+##Main 
+########################################################################## $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 main()
